@@ -1,0 +1,12 @@
+# Depdency directory
+node_modules
+
+# Code coverage for Istanbul
+coverage
+.nyc_output
+
+# Webpack compiled bundle directory
+dist
+
+# MS VS Code editor config/options
+.vscode
