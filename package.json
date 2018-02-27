@@ -1,0 +1,30 @@
+{
+  "name": "js-tdd-kit",
+  "version": "1.0.0",
+  "description": "ES6 TDD starter kit with Webpack, Babel, ESLint, Testem, Tape, jsdom and Istanbul",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfurzewaddock/js-tdd-kit.git"
+  },
+  "keywords": [ 
+    "ES6",
+    "TDD",
+    "JavaScript",
+    "Testem",
+    "Tape",
+    "jsdom ",
+    "Webpack",
+    "Babel",
+    "Istanbul",
+    "ESLint"],
+  "author": "Leo Furze-Waddock <leo@furze-waddock.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lfurzewaddock/js-tdd-kit/issues"
+  },
+  "homepage": "https://github.com/lfurzewaddock/js-tdd-kit#readme"
+}
