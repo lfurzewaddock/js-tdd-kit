@@ -13,7 +13,21 @@ module.exports = {
         exclude: /node_modules/,
         include: [
           path.resolve(__dirname, "../src"),
-          path.resolve(__dirname, "../test"),
+        ],
+        enforce: "pre",
+        loader: "eslint-loader",
+        options: {
+          emitWarning: true,
+          emitError: true,
+          failOnWarning: true,
+          failOnError: true,
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, "../src"),
         ],
         use: {
           loader: "babel-loader",
