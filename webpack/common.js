@@ -6,6 +6,21 @@ module.exports = {
   entry: {
     app: "./src",
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, "../src"),
+          path.resolve(__dirname, "../test"),
+        ],
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
   plugins: [
     new CleanWebpackPlugin(["dist"], {
       root: path.resolve(__dirname, "../"),
