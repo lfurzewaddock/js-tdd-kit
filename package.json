@@ -8,7 +8,9 @@
     "devBuild": "node_modules/.bin/webpack --config webpack/dev",
     "devWatch": "npm run devBuild -- --watch",
     "devStart": "node_modules/.bin/webpack-dev-server --config webpack/dev --open",
-    "proBuild": "node_modules/.bin/webpack --config webpack/prod"
+    "proBuild": "node_modules/.bin/webpack --config webpack/prod",
+    "lint": "node_modules/.bin/prettier-eslint \"*/**/*.js\" --log-level info",
+    "lintFix": "node_modules/.bin/prettier-eslint  \"*/**/*.js\" --write --log-level warn"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "html-webpack-plugin": "^3.0.6",
+    "prettier-eslint-cli": "^4.7.1",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "webpack": "3.11.0",
     "webpack-dev-server": "2.11.1",
