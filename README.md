@@ -13,3 +13,22 @@
 <img src="https://avatars3.githubusercontent.com/u/12507332?s=200&v=4" width="100" alt="Testem" title="Testem" style="margin:0 10px"></img>
 <img src="https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/es6/es6.png" width="100" alt="ES6" title="ES6"></img>
 
+# WIP
+
+Further reading;
+[Why I use Tape Instead of Mocha & So Should You](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4)
+
+## JSDOM
+
+jsdom is included for testing code that requires a Web Browser on the command line, such as DOM manipulation, to facilitate a fast, integrated TDD development experience.
+
+To avoid the antipattern of copying globals from a jsdom window onto the Node.js global object; https://github.com/jsdom/jsdom/wiki/Don't-stuff-jsdom-globals-onto-the-Node-global, in the file `test/jsdom.environment.js`, jsdom is made available on the Node.js global object under the namespace: `kitTddJsLfurzewaddockComGithub` which can be invoked in a fixture setup function within tests that need it. Currently, it is not possible to bundle jsdom with Webpack https://github.com/jsdom/jsdom/issues/2066, which is why `test/jsdom.environment.js` is written using standard ES5 CommonJS syntax, so it does not need to be included in the bundle by Webpack, but after creating the custom namespace as above, requires the webpack bundle `dist/app.bundle.js`.
+
+Other approaches which add jsdom to the node process global object include: (*not encouraged by jsdom*);
+- https://zinserjan.github.io/mocha-webpack/docs/guides/jsdom.html
+- https://www.npmjs.com/package/shim-webpack-require-for-node-tests
+
+Other potential ways using npm packages;
+- [browser-env](https://github.com/lukechilds/browser-env)
+- [window](https://github.com/lukechilds/window)
+
