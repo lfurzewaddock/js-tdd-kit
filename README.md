@@ -76,9 +76,9 @@ Currently, it is not possible to bundle jsdom with Webpack https://github.com/js
 
 Other approaches which add jsdom to the node process global object include: (*not encouraged by jsdom*);
 - https://zinserjan.github.io/mocha-webpack/docs/guides/jsdom.html
-- https://www.npmjs.com/package/shim-webpack-require-for-node-tests
 
 Other potential ways using npm packages;
 - [browser-env](https://github.com/lukechilds/browser-env)
 - [window](https://github.com/lukechilds/window)
+- [shim-webpack-require-for-node-tests](https://www.npmjs.com/package/shim-webpack-require-for-node-tests)
 
