@@ -1,11 +1,28 @@
-import { cube } from "../../modules/math";
-
-function component() {
-  const element = document.createElement("div");
-
-  element.innerHTML = ["Hello js-tdd-kit TEST!", `5 cubed is equal to ${cube(5)}`].join("\n\n");
-
-  return element;
+export function component(el, htmlString) {
+  if (typeof el.innerHTML === "undefined") {
+    throw new Error("DOM element required!");
+  }
+  el.innerHTML = htmlString;
+  return el;
 }
 
-document.body.appendChild(component());
+export function generateHtml(htmlStrings, calcResult) {
+  const htmlString = htmlStrings[0] + calcResult;
+  const htmlString2 = htmlString.split([","]);
+  return htmlString2.join(",\n\n");
+}
+
+export function getElement(doc) {
+  if (typeof doc === "undefined") {
+    throw new Error("Web Browser DOM required to run this code!!!");
+  }
+  return document.createElement("div");
+}
+
+export default function render(element, doc) {
+  if (typeof doc === "undefined") {
+    throw new Error("Web Browser DOM required to run this code!!!");
+  }
+  const document = doc;
+  document.body.appendChild(element);
+}
