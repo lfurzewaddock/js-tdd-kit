@@ -43,13 +43,13 @@
 
 5. Test configuration
 
-Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both 'src' and 'test' directories, excluding files `test\utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation. 
+Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both 'src' and 'test' directories, excluding files `test/utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation. 
 
 ## Commands
 
 
-| Command               | Description  |
-| --------------------- |:-------------|
+| Command                    | Description  |
+| :------------------------- |:-------------|
 | `$ npm run testBuildBrowser` | builds test files in the 'dist' directory, suitable for a web browser |
 | `$ npm run testBuildNode` | builds test files in the 'dist' directory, suitable for node |
 | `$ npm test` | runs testBuildNode, before running tests and piping tap results to tap-spec CLI reporter |
