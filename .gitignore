@@ -9,4 +9,4 @@ coverage
 dist
 
 # MS VS Code editor config/options
-.vscode
+# .vscode
