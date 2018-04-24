@@ -88,6 +88,7 @@ Currently, Webpack 3 is in use, but upgrade to Webpack 4 after it has matured by
 - [Testing Express APIs with Tape and Supertest](https://puigcerber.com/2015/11/27/testing-express-apis-with-tape-and-supertest/)
 - [Unit Testing with Tape](https://jamesanaipakos.com/2016-03-01-unit-testing-with-tape)
 - [Move Fast and Don’t Break Things](https://medium.freecodecamp.org/how-test-driven-development-increased-my-confidence-of-shipping-new-code-without-breaking-things-a759a570bd95)
+- [Learn Tape](https://github.com/dwyl/learn-tape)
 ### JSDOM
 
 jsdom is included for testing code that requires a Web Browser on the command line, such as DOM manipulation, to facilitate a fast, integrated TDD experience.
