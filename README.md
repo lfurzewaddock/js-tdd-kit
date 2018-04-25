@@ -67,17 +67,25 @@ Run the various commands on the sample files included. Assuming everything works
 
 ### MS VS Code
 
-I develop on MS Windows 10 Pro using WSL (Windows Subsystem for Linux) and my preferred editor is MS VS Code which includes an integrated terminal for tests to run on a bash CLI provided by WSL and the ability to carry out line by line debugging.
+I develop on MS Windows 10 Pro using WSL (Windows Subsystem for Linux) and my preferred editor is MS VS Code which includes an integrated terminal for tests to run on a bash CLI provided by WSL, the ability to carry out line by line debugging and extensions to add support for ESLint, Prettier and various other tools/utilities or other functionality.
 
 Therefore, `.vscode/launch.json` is included in the project to support my environment, but is optional, so can be can be edited to suit your environment or excluded from your project, by removing the relevant comment in `.gitignore`.
 
-However, currently with any version later than 1.18.1 up until the most recent release, currently 1.22, during debugging execution fails to stop at breakpoints set in the editor UI. 
-
-[Debug Breakpoints not working #45657](https://github.com/Microsoft/vscode/issues/45657#issuecomment-373556464)
+However, currently I'm experiencing an issue with any version later than 1.18.1 up until the most recent release, currently 1.22, during debugging execution fails to stop at breakpoints set in the editor UI. [Debug Breakpoints not working #45657](https://github.com/Microsoft/vscode/issues/45657#issuecomment-373556464)
 
 ### Webpack
 
 Currently, Webpack 3 is in use, but upgrade to Webpack 4 after it has matured by a few months is planned.
+
+#### Babel
+
+Webpack is set to use Babel configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins 'add-module-exports' and 'transform-es2015-modules-umd' to ES5 UMD (Universal Module Definition), so they can be run in Node or a Web Browser.
+#### ESLint
+The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on code in the `src` directory for development and production builds, but not test code and will abort reporting any issues found.
+
+### Prettier
+
+Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from the command line (See lint commands above), using the package 'prettier-eslint' prettier is run first then ESlint, so ESLint rules take precedence. Webpack should be set to handle this automatically, but currently is not.
 
 ### Tape/TDD
 - [TDD the RITE Way](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)
