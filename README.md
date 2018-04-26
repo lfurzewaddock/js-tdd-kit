@@ -111,5 +111,6 @@ Other approaches which add jsdom to the node process global object include: (*no
 Other potential ways using npm packages;
 - [browser-env](https://github.com/lukechilds/browser-env)
 - [window](https://github.com/lukechilds/window)
+- [jsdom-global](https://github.com/rstacruz/jsdom-global)
 - [shim-webpack-require-for-node-tests](https://www.npmjs.com/package/shim-webpack-require-for-node-tests)
 
