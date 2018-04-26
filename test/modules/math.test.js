@@ -3,10 +3,30 @@ import test from "tape";
 import { cube } from "../../src/modules/math";
 
 test("math", (t) => {
-  const message = "should be a function";
-  const expected = "function";
-  const actual = typeof cube;
+  t.test("cube", (assert) => {
+    const message = "should be a function";
+    const expected = "function";
+    const actual = typeof cube;
 
-  t.equal(actual, expected, message);
-  t.end();
+    assert.equal(actual, expected, message);
+    assert.end();
+  });
+
+  t.test("cube", (assert) => {
+    const message = "should return single supplied argument cubed: 1";
+    const expected = 1;
+    const actual = cube(1);
+
+    assert.equal(actual, expected, message);
+    assert.end();
+  });
+
+  t.test("cube", (assert) => {
+    const message = "should return single supplied argument cubed: 2";
+    const expected = 8;
+    const actual = cube(2);
+
+    assert.equal(actual, expected, message);
+    assert.end();
+  });
 });
