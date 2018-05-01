@@ -1,4 +1,4 @@
-# Depdency directory
+# Dependency directory
 node_modules
 
 # Code coverage for Istanbul
@@ -10,3 +10,6 @@ dist
 
 # MS VS Code editor config/options
 # .vscode
+
+# Apple MAC hidden files
+.DS_Store
