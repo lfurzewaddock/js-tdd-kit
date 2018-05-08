@@ -1,3 +1,5 @@
+"use strict";
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -5,7 +7,7 @@ const webpack = require("webpack");
 module.exports = {
   context: path.resolve(__dirname, "../test"),
   entry: {
-    app: "./",
+    app: "./webpack",
   },
   module: {
     rules: [
