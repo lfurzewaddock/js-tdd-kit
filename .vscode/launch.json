@@ -7,15 +7,6 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch in WSL",
-      "useWSL": true,
-      "stopOnEntry": false,
-      "program": "${workspaceFolder}/dist/jsdom.environment.js",
-      "sourceMaps": true
-    },
-    {
-      "type": "node",
-      "request": "launch",
       "name": "Launch via NPM",
       "useWSL": true,
       "stopOnEntry": false,
