@@ -1,3 +1,5 @@
+"use strict";
+
 import * as greeting from "./components/greeting";
 import { cube } from "./modules/math";
 

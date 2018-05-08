@@ -1,3 +1,5 @@
+"use strict";
+
 export function component(el, htmlString) {
   if (typeof el.innerHTML === "undefined") {
     throw new Error("DOM element required!");
