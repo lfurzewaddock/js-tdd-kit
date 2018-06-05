@@ -49,19 +49,20 @@ Run the various commands on the sample files included. Assuming everything works
 ## Commands
 
 
-| Command                    | Description               |
-| :------------------------- |:--------------------------|
-| `$ npm run testBuildBrowser` | builds test files in the 'dist' directory, suitable for a web browser |
-| `$ npm run testBuildNode` | builds test files in the 'dist' directory, suitable for node |
-| `$ npm test` | runs testBuildNode, before running tests and piping tap results to tap-spec CLI reporter |
-| `$ npm run testStart` | Webpack Dev Server compiles test files, opening output in default web browser |
-| `$ npm run debug` | runs testBuildNode, before running tests with inspector protocol configured to enable process debugging |
-| `$ npm run devBuild` | builds 'src' files in the 'dist' directory, configured for development, suitable for a web browser |
-| `$ npm run devWatch` | runs devBuild and watches for changes |
-| `$ npm run devStart` | Webpack Dev Server compiles 'src' files, opening output in default web browser |
-| `$ npm run prodBuild` | builds 'src' files in the 'dist' directory, configured for production, suitable for a web browser |
-| `$ npm run lint` | lint files and reports issues (read only) |
-| `$ npm run lintFix` | lint files and attempts to fix issues automatically (write) |
+| Name:                               | Description:                                                            |
+|-------------------------------------|-------------------------------------------------------------------------|
+| `$ npm run testBuildBrowser`        | builds test files in the 'dist' directory, suitable for a web browser |
+| `$ npm run testBuildNode`           | builds test files in the 'dist' directory, suitable for node |
+| `$ npm run testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter |
+| `$ npm test`                        | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter |
+| `$ npm run coverage`                | runs and opens coverage report for ES6+ using ES module loader, avoiding Babel |
+| `$ npm run testStart`               | Webpack Dev Server compiles test files, opening output in default web browser |
+| `$ npm run debug`                   | runs testBuildNode, before running tests with inspector protocol configured to enable process debugging |
+| `$ npm run devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable for a web browser | `$ npm run devWatch`                | runs devBuild and watches for changes |
+| `$ npm run devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
+| `$ npm run prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable for a web browser |
+| `$ npm run lint`                    | lint files and reports issues (read only) |
+| `$ npm run lintFix`                 | lint files and attempts to fix issues automatically (write) |
 
 
 ## Further reading / Notes
@@ -72,8 +73,6 @@ I develop on MS Windows 10 Pro using WSL (Windows Subsystem for Linux) and my pr
 
 Therefore, `.vscode/launch.json` is included in the project to support my environment, but is optional, so can be can be edited to suit your environment or excluded from your project, by removing the relevant comment in `.gitignore`.
 
-However, currently I'm experiencing an issue with any version later than 1.18.1 up until the most recent release, currently 1.22, during debugging execution fails to stop at breakpoints set in the editor UI. [Debug Breakpoints not working #45657](https://github.com/Microsoft/vscode/issues/45657#issuecomment-373556464)
-
 ### Webpack
 
 Currently, Webpack 3 is in use, but upgrade to Webpack 4 after it has matured by a few months is planned.
@@ -81,7 +80,9 @@ Currently, Webpack 3 is in use, but upgrade to Webpack 4 after it has matured by
 #### Babel
 
 Webpack is set to use Babel configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins 'add-module-exports' and 'transform-es2015-modules-umd' to ES5 UMD (Universal Module Definition), so they can be run in Node or a Web Browser.
+
 #### ESLint
+
 The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on code in the `src` directory for development and production builds, but not test code and will abort reporting any issues found.
 
 ### Prettier
@@ -89,6 +90,7 @@ The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` an
 Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from the command line (See lint commands above), using the package 'prettier-eslint' prettier is run first then ESlint, so ESLint rules take precedence. Webpack should be set to handle this automatically, but currently is not.
 
 ### Tape/TDD
+
 - [TDD the RITE Way](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3)
 - [Why I use Tape Instead of Mocha & So Should You](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4)
 - [5 Questions Every Unit Test Must Answer](https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d)
@@ -98,15 +100,16 @@ Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from 
 - [Unit Testing with Tape](https://jamesanaipakos.com/2016-03-01-unit-testing-with-tape)
 - [Move Fast and Don’t Break Things](https://medium.freecodecamp.org/how-test-driven-development-increased-my-confidence-of-shipping-new-code-without-breaking-things-a759a570bd95)
 - [Learn Tape](https://github.com/dwyl/learn-tape)
+
 ### JSDOM
 
 jsdom is included for testing code that requires a Web Browser on the command line, such as DOM manipulation, to facilitate a fast, integrated TDD experience.
 
 To avoid the antipattern of copying globals from a jsdom window onto the Node.js global object; https://github.com/jsdom/jsdom/wiki/Don't-stuff-jsdom-globals-onto-the-Node-global, in the file `test/jsdom.environment.js`, jsdom is made available on the Node.js global object under the namespace: `kitTddJsLfurzewaddockComGithub` which can be invoked in a fixture setup function within tests that need it. 
 
-Currently, it is not possible to bundle jsdom with Webpack https://github.com/jsdom/jsdom/issues/2066, which is why `test/jsdom.environment.js` is written using standard ES5 CommonJS syntax, so it does not need to be included in the bundle by Webpack, but after creating the custom namespace as above, requires the webpack bundle `dist/app.bundle.js`.
+Currently, it is not possible to bundle jsdom with Webpack https://github.com/jsdom/jsdom/issues/2066, which is why `test/jsdom.environment.js` is written using standard ES5 CommonJS syntax, so it does not need to be included in the bundle by Webpack.
 
-Other approaches which add jsdom to the node process global object include: (*not encouraged by jsdom*);
+Other approaches *not encouraged by jsdom* which add jsdom to the node process global object include: ;
 - https://zinserjan.github.io/mocha-webpack/docs/guides/jsdom.html
 
 Other potential ways using npm packages;
