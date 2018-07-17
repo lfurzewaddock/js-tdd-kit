@@ -15,14 +15,15 @@ export function generateHtml(htmlStrings, calcResult) {
 }
 
 export function getElement(doc) {
-  if (typeof doc === "undefined") {
+  if (typeof doc.body === "undefined") {
     throw new Error("Web Browser DOM required to run this code!!!");
   }
+  const document = doc;
   return document.createElement("div");
 }
 
 export default function render(element, doc) {
-  if (typeof doc === "undefined") {
+  if (typeof doc.body === "undefined") {
     throw new Error("Web Browser DOM required to run this code!!!");
   }
   const document = doc;
