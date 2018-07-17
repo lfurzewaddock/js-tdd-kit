@@ -6,7 +6,7 @@
   "framework": "tap",
   "launchers": {
     "Node": {
-      "command": "tape --require esm test/jsdom.environment.js test/{,**/}/*.test.js",
+      "command": "node_modules/.bin/tape --require esm test/jsdom.environment.js test/{,**/}/*.test.js",
       "protocol": "tap"
     }
   },
