@@ -34,12 +34,12 @@ function setup() {
   return fixtures;
 }
 
-const teardown = (fixtures) => {
+function teardown(fixtures) {
   // Dispose fixtures
   fixtures.document.body.innerHTML = "";
   // Assign reference to null for GC
   fixtures = null; // eslint-disable-line no-param-reassign
-};
+}
 
 before("before", (assert) => {
   assert.pass("Do something before tests here");
@@ -54,6 +54,28 @@ test("greeting", (t) => {
 
     assert.equal(actual, expected, message);
 
+    assert.end();
+  });
+  t.test("greeting.getElement", (assert) => {
+    const fixtures = setup();
+    const el = greeting.getElement(fixtures.document);
+
+    const message = "should return a div element";
+    const expected = "DIV";
+    const actual = el.nodeName;
+
+    assert.equals(actual, expected, message);
+
+    teardown(fixtures);
+    assert.end();
+  });
+  t.test("greeting.getElement", (assert) => {
+    const message = "should raise an error when not supplied arguments";
+    const doc = "";
+
+    assert.throws(function throwsFn() {
+      greeting.getElement(doc);
+    }, message);
     assert.end();
   });
   t.test("greeting.default", (assert) => {
@@ -82,6 +104,15 @@ test("greeting", (t) => {
     teardown(fixtures);
     assert.end();
   });
+  t.test("greeting.component", (assert) => {
+    const message = "should raise an error when not supplied DOM element as first argument";
+    const el = "";
+
+    assert.throws(function throwsFn() {
+      greeting.component(el, "simple string");
+    }, message);
+    assert.end();
+  });
   t.test("greeting.default", (assert) => {
     const fixtures = setup();
     const mutateEl = greeting.component(fixtures.divElement, "simple string");
@@ -96,6 +127,16 @@ test("greeting", (t) => {
     assert.equals(actual, expected, message);
 
     teardown(fixtures);
+    assert.end();
+  });
+  t.test("greeting.render", (assert) => {
+    const message = "should raise an error when not supplied DOM document as second argument";
+    const el = "";
+    const doc = "";
+
+    assert.throws(function throwsFn() {
+      greeting.default(el, doc);
+    }, message);
     assert.end();
   });
   t.test("greeting.generateHtml", (assert) => {
