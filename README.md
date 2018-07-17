@@ -1,4 +1,4 @@
-# js-tdd-kit (WIP)
+# js-tdd-kit (JavaScript TDD Kit)
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Known Vulnerabilities](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit?targetFile=package.json)
@@ -50,19 +50,20 @@ Run the various commands on the sample files included. Assuming everything works
 
 | $ npm run ...              | Description:                                                            |
 |-------------------------------------|-------------------------------------------------------------------------|
-| `testBuildBrowser`        | builds test files in the 'dist' directory, suitable for a web browser |
-| `testBuildNode`           | builds test files in the 'dist' directory, suitable for node |
+| `testBuildBrowser`        | builds 'test' files with Webpack in the 'dist' directory, suitable for a web browser. Open `dist/index.html` in a web browser to see test results in the dev tools console. |
+| `testBuildNode`           | builds 'test' files with Webpack in the 'dist' directory, suitable for node. Use testNodeBundle or run in your terminal directly: `$ node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` |
 | `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter |
 | `test`                    | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter |
-| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report |
-| `testStart`               | Webpack Dev Server compiles test files, opening output in default web browser |
-| `debug`                   | runs testBuildNode, before running tests with inspector protocol configured to enable process debugging |
-| `devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable for a web browser |
+| `testStart`               | Webpack Dev Server compiles 'test' files, opening output in default web browser. See test results in the dev tools console. |
+| `testem`                  | TDD UX: runs tests automatically, with fail/pass tally in console watching for changes |
+| `debug`                   | runs ES6+ tests with inspector protocol configured to enable process debugging using ES module loader, avoiding Babel |
+| `devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable to open in a web browser |
 | `devWatch`                | runs devBuild and watches for changes |
 | `devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
-| `prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable for a web browser |
+| `prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable to open in a web browser |
 | `lint`                    | lint files and reports issues (read only) |
 | `lintFix`                 | lint files and attempts to fix issues automatically (write) |
+| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report in Google Chrome |
 
 
 ## Further reading / Notes
@@ -73,7 +74,7 @@ I develop on MS Windows 10 Pro using WSL (Windows Subsystem for Linux) and my pr
 
 Therefore, `.vscode/launch.json` is included in the project to support my environment, but is optional, so can be can be edited to suit your environment or excluded from your project, by removing the relevant comment in `.gitignore`.
 
-Code contributors should either install current release of MS VS Code extension: [WSL workspaceFolder](https://marketplace.visualstudio.com/items?itemName=lfurzewaddock.vscode-wsl-workspacefolder) or replace command reference in .vscode/launch.json
+MS VS Code users, should either install current release of MS VS Code extension: [WSL workspaceFolder](https://marketplace.visualstudio.com/items?itemName=lfurzewaddock.vscode-wsl-workspacefolder) or replace command reference in .vscode/launch.json
 
 ### Webpack
 
@@ -98,6 +99,7 @@ Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from 
 - [5 Questions Every Unit Test Must Answer](https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d)
 - [The Outrageous Cost of Skipping TDD & Code Reviews](https://medium.com/javascript-scene/the-outrageous-cost-of-skipping-tdd-code-reviews-57887064c412)
 - [Github Tape repo](https://github.com/substack/tape)
+- [Github tape-promise repo](https://github.com/jprichardson/tape-promise)
 - [Testing Express APIs with Tape and Supertest](https://puigcerber.com/2015/11/27/testing-express-apis-with-tape-and-supertest/)
 - [Unit Testing with Tape](https://jamesanaipakos.com/2016-03-01-unit-testing-with-tape)
 - [Move Fast and Don’t Break Things](https://medium.freecodecamp.org/how-test-driven-development-increased-my-confidence-of-shipping-new-code-without-breaking-things-a759a570bd95)
