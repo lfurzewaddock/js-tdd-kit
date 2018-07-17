@@ -50,20 +50,20 @@ Run the various commands on the sample files included. Assuming everything works
 
 | $ npm run ...              | Description:                                                            |
 |-------------------------------------|-------------------------------------------------------------------------|
-| `testBuildBrowser`        | builds 'test' files with Webpack in the 'dist' directory, suitable for a web browser. Open `dist/index.html` in a web browser to see test results in the dev tools console. |
-| `testBuildNode`           | builds 'test' files with Webpack in the 'dist' directory, suitable for node. Use testNodeBundle or run in your terminal directly: `$ node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` |
-| `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter |
-| `test`                    | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter |
-| `testStart`               | Webpack Dev Server compiles 'test' files, opening output in default web browser. See test results in the dev tools console. |
-| `testem`                  | TDD UX: runs tests automatically, with fail/pass tally in console watching for changes |
+| `testBuildBrowser`        | builds 'test' files with Webpack in to the 'dist' directory, suitable for a web browser.  Open `dist/index.html` in a web browser. See test results in the dev tools console. |
+| `testBuildNode`           | builds 'test' files with Webpack in to the 'dist' directory, suitable for node.  Use `$ npm run testNodeBundle` or `$ node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` |
+| `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter. |
+| `test`                    | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter. |
+| `testStart`               | Webpack Dev Server compiles 'test' files, opening output in your default web browser.  See test results in the dev tools console. |
+| `testem`                  | TDD UX: runs ES6+ tests using ES module loader, avoiding Babel, with fail/pass tally in console and watches for changes. |
 | `debug`                   | runs ES6+ tests with inspector protocol configured to enable process debugging using ES module loader, avoiding Babel |
-| `devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable to open in a web browser |
+| `devBuild`                | builds 'src' files in to the 'dist' directory, configured for development, suitable to open in a web browser |
 | `devWatch`                | runs devBuild and watches for changes |
 | `devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
-| `prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable to open in a web browser |
+| `prodBuild`               | builds 'src' files in to the 'dist' directory, configured for production, suitable to open in a web browser |
 | `lint`                    | lint files and reports issues (read only) |
 | `lintFix`                 | lint files and attempts to fix issues automatically (write) |
-| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report in Google Chrome |
+| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report in 'chrome' |
 
 
 ## Further reading / Notes
