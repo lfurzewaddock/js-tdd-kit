@@ -6,8 +6,8 @@
   "scripts": {
     "testBuildBrowser": "node_modules/.bin/webpack --config webpack/test.browser",
     "testBuildNode": "node_modules/.bin/webpack --config webpack/test.node",
-    "testNodeBundle": "npm run testBuildNode && tape dist/jsdom.environment.js dist/app.bundle.js | tap-spec",
-    "test": "tape --require esm test/jsdom.environment.js test/{,**/}/*.test.js | tap-spec",
+    "testNodeBundle": "npm run testBuildNode && node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js | tap-spec",
+    "test": "node_modules/.bin/tape --require esm test/jsdom.environment.js test/{,**/}/*.test.js | tap-spec",
     "testStart": "node_modules/.bin/webpack-dev-server --config webpack/test.browser --open",
     "testem": "node_modules/.bin/testem -f testem.node.json",
     "debug": "node --nolazy --inspect-brk=5858 node_modules/.bin/tape --require esm test/jsdom.environment.js test/{,**/}/*.test.js",
@@ -17,7 +17,7 @@
     "prodBuild": "node_modules/.bin/webpack --config webpack/prod",
     "lint": "node_modules/.bin/prettier-eslint \"*/**/*.js\" --log-level info",
     "lintFix": "node_modules/.bin/prettier-eslint  \"*/**/*.js\" --write --log-level warn",
-    "coverage": "node_modules/nyc/bin/nyc.js --require esm --reporter=html tape test/jsdom.environment.js test/{,**/}/*.test.js | tap-spec && ./bin/opn-cli coverage/index.html -- chrome"
+    "coverage": "node_modules/nyc/bin/nyc.js --require esm --reporter=html npm test && ./bin/opn-cli coverage/index.html -- chrome"
   },
   "repository": {
     "type": "git",
