@@ -1,5 +1,6 @@
 "use strict";
 
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -14,7 +15,6 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, "./")],
         enforce: "pre",
         loader: "eslint-loader",
         options: {
@@ -27,7 +27,6 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: [path.resolve(__dirname, "./")],
         use: {
           loader: "babel-loader",
         },
@@ -35,18 +34,13 @@ module.exports = {
     ],
   },
   devtool: "inline-source-map",
-  devServer: {
-    hot: true,
-    contentBase: path.join(__dirname, "../dist"),
-    overlay: {
-      errors: true,
-      warnings: true,
-    },
-  },
   node: {
     fs: "empty",
   },
   plugins: [
+    new CleanWebpackPlugin(["dist"], {
+      root: path.resolve(__dirname, "../"),
+    }),
     new HtmlWebpackPlugin({
       title: "js-tdd-kit",
     }),
