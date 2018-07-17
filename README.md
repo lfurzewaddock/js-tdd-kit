@@ -1,8 +1,7 @@
 # js-tdd-kit (WIP)
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![bitHound Code](https://www.bithound.io/github/lfurzewaddock/js-tdd-kit/badges/code.svg)](https://www.bithound.io/github/lfurzewaddock/js-tdd-kit)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/lfurzewaddock/js-tdd-kit/badges/devDependencies.svg)](https://www.bithound.io/github/lfurzewaddock/js-tdd-kit/master/dependencies/npm)[![Known Vulnerabilities](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lfurzewaddock/js-tdd-kit?targetFile=package.json)
 
 <img src="https://raw.githubusercontent.com/github/explore/af73608b7685f722c713f3c554057270a358ae44/topics/eslint/eslint.png" height="75" alt="ESLint" title="ESLint"></img>
 <img src="https://avatars0.githubusercontent.com/u/25822731?s=200&v=4" height="75" alt="Prettier" title="Prettier" style="margin-left:10px"></img>
@@ -49,20 +48,21 @@ Run the various commands on the sample files included. Assuming everything works
 ## Commands
 
 
-| Name:                               | Description:                                                            |
+| $ npm run ...              | Description:                                                            |
 |-------------------------------------|-------------------------------------------------------------------------|
-| `$ npm run testBuildBrowser`        | builds test files in the 'dist' directory, suitable for a web browser |
-| `$ npm run testBuildNode`           | builds test files in the 'dist' directory, suitable for node |
-| `$ npm run testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter |
-| `$ npm test`                        | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter |
-| `$ npm run coverage`                | runs and opens coverage report for ES6+ using ES module loader, avoiding Babel |
-| `$ npm run testStart`               | Webpack Dev Server compiles test files, opening output in default web browser |
-| `$ npm run debug`                   | runs testBuildNode, before running tests with inspector protocol configured to enable process debugging |
-| `$ npm run devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable for a web browser | `$ npm run devWatch`                | runs devBuild and watches for changes |
-| `$ npm run devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
-| `$ npm run prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable for a web browser |
-| `$ npm run lint`                    | lint files and reports issues (read only) |
-| `$ npm run lintFix`                 | lint files and attempts to fix issues automatically (write) |
+| `testBuildBrowser`        | builds test files in the 'dist' directory, suitable for a web browser |
+| `testBuildNode`           | builds test files in the 'dist' directory, suitable for node |
+| `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter |
+| `test`                    | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter |
+| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report |
+| `testStart`               | Webpack Dev Server compiles test files, opening output in default web browser |
+| `debug`                   | runs testBuildNode, before running tests with inspector protocol configured to enable process debugging |
+| `devBuild`                | builds 'src' files in the 'dist' directory, configured for development, suitable for a web browser |
+| `devWatch`                | runs devBuild and watches for changes |
+| `devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
+| `prodBuild`               | builds 'src' files in the 'dist' directory, configured for production, suitable for a web browser |
+| `lint`                    | lint files and reports issues (read only) |
+| `lintFix`                 | lint files and attempts to fix issues automatically (write) |
 
 
 ## Further reading / Notes
@@ -72,6 +72,8 @@ Run the various commands on the sample files included. Assuming everything works
 I develop on MS Windows 10 Pro using WSL (Windows Subsystem for Linux) and my preferred editor is MS VS Code which includes an integrated terminal for tests to run on a bash CLI provided by WSL, the ability to carry out line by line debugging and extensions to add support for ESLint, Prettier and various other tools/utilities or other functionality.
 
 Therefore, `.vscode/launch.json` is included in the project to support my environment, but is optional, so can be can be edited to suit your environment or excluded from your project, by removing the relevant comment in `.gitignore`.
+
+Code contributors should either install current release of MS VS Code extension: [WSL workspaceFolder](https://marketplace.visualstudio.com/items?itemName=lfurzewaddock.vscode-wsl-workspacefolder) or replace command reference in .vscode/launch.json
 
 ### Webpack
 
