@@ -6,4 +6,3 @@ const jsdom = require("jsdom");
 const kitTddJsLfurzewaddockComGithub = global.kitTddJsLfurzewaddockComGithub || {};
 kitTddJsLfurzewaddockComGithub.jsdom = jsdom;
 global.kitTddJsLfurzewaddockComGithub = kitTddJsLfurzewaddockComGithub;
-
