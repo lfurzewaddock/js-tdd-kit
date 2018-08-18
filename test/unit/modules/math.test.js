@@ -1,6 +1,6 @@
 import test from "tape";
 
-import { cube, square } from "../../src/modules/math";
+import { cube, square } from "../../../src/modules/math";
 
 test("math", (t) => {
   t.test("cube", (assert) => {

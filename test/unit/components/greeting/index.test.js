@@ -1,6 +1,6 @@
 import test from "tape";
-import isNodeEnvironment from "../../utils";
-import * as greeting from "../../../src/components/greeting";
+import isNodeEnvironment from "../../../utils";
+import * as greeting from "../../../../src/components/greeting";
 
 const before = test;
 const after = test;
