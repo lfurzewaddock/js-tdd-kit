@@ -10,12 +10,12 @@ function setup() {
   var globalObj = {};
   if (isNode) {
     if (
-      typeof global.kitTddJsLfurzewaddockComGithub !== "object" ||
-      typeof global.kitTddJsLfurzewaddockComGithub.jsdom !== "object"
+      typeof global.jsTddKitLfurzewaddockComGithub !== "object" ||
+      typeof global.jsTddKitLfurzewaddockComGithub.jsdom !== "object"
     ) {
-      throw new Error("kitTddJsLfurzewaddockComGithub namespace or jsdom on namespace does not exist!");
+      throw new Error("jsTddKitLfurzewaddockComGithub namespace or jsdom on namespace does not exist!");
     }
-    const { JSDOM } = global.kitTddJsLfurzewaddockComGithub.jsdom;
+    const { JSDOM } = global.jsTddKitLfurzewaddockComGithub.jsdom;
     globalObj = new JSDOM().window;
   } else {
     globalObj = window;
