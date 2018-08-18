@@ -17,7 +17,8 @@
     "prodBuild": "node_modules/.bin/webpack --config webpack/prod",
     "lint": "node_modules/.bin/prettier-eslint \"*/**/*.js\" --log-level info",
     "lintFix": "node_modules/.bin/prettier-eslint  \"*/**/*.js\" --write --log-level warn",
-    "coverage": "node_modules/nyc/bin/nyc.js --require esm --reporter=html npm test && ./bin/opn-cli coverage/index.html -- chrome"
+    "coverage": "NODE_ENV=development node_modules/nyc/bin/nyc.js --require esm npm test",
+    "coverReport": "npm run coverage && node_modules/nyc/bin/nyc.js report --reporter=html && ./bin/opn-cli coverage/index.html -- chrome"
   },
   "repository": {
     "type": "git",
