@@ -65,7 +65,7 @@
     "prettier-eslint-cli": "^4.7.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0",
-    "testem": "^2.7.1",
+    "testem": "^2.9.3",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "webpack": "3.11.0",
     "webpack-dev-server": "2.11.1",
