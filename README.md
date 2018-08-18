@@ -63,7 +63,8 @@ Run the various commands on the sample files included. Assuming everything works
 | `prodBuild`               | builds 'src' files in to the 'dist' directory, configured for production, suitable to open in a web browser |
 | `lint`                    | lint files and reports issues (read only) |
 | `lintFix`                 | lint files and attempts to fix issues automatically (write) |
-| `coverage`                | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter and opens HTML report in 'chrome' |
+| `coverage`                | sets node env to dev, NYC instruments code by running ES6+ tests using ES module loader, avoiding Babel |
+| `coverReport`             | runs coverage command before NYC generates HTML report from instumented code, opening report in default web browser |
 
 
 ## Further reading / Notes
