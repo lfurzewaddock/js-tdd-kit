@@ -43,7 +43,7 @@
 
 5. Test configuration
 
-Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both 'src' and 'test' directories, excluding files `test/utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation. 
+Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both `src` and `test` directories, excluding files `test/utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation. 
 
 ## Commands
 
@@ -55,7 +55,7 @@ Run the various commands on the sample files included. Assuming everything works
 | `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI terminal reporter. |
 | `test`                    | runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, piping results to tap-spec CLI terminal reporter. |
 | `testStart`               | Webpack Dev Server compiles `test` files, opening output in default web browser.  See test results in the web browser dev tools console. |
-| `testem`                  | TDD UX: runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, with fail/pass tally in terminal and watches for changes. |
+| `testem`                  | TDD UX: runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, with fail/pass tally in the terminal and watches for changes. |
 | `debug`                   | runs ES6+ Tape tests with inspector protocol configured to enable process debugging using esm (ES module loader), avoiding Babel. |
 | `devBuild`                | Webpack builds `src` files in to the `dist` directory, configured for development, suitable to open in a web browser. |
 | `devWatch`                | runs devBuild and watches for changes. |
@@ -83,7 +83,7 @@ This project uses Webpack v4 for bundling files with npm commands suitable for b
 
 #### Babel
 
-Webpack is set to use Babel v6 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins 'add-module-exports' and 'transform-es2015-modules-umd' to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
+Webpack is set to use Babel v6 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins `add-module-exports` and `transform-es2015-modules-umd` to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
 
 #### esm (ES module loader)
 
@@ -95,7 +95,7 @@ The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` an
 
 ### Prettier
 
-Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from the command line (See lint commands above), using the package 'prettier-eslint' prettier is run first then ESlint, so ESLint rules take precedence. Webpack should be set to handle this automatically, but currently is not.
+Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from the command line (See lint commands above), using the package `prettier-eslint` prettier is run first then ESlint, so ESLint rules take precedence. Webpack should be set to handle this automatically, but currently is not.
 
 ### Tape/TDD
 
