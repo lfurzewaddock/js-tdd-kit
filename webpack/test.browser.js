@@ -44,7 +44,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "js-tdd-kit",
     }),
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   output: {

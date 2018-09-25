@@ -79,7 +79,7 @@ MS VS Code users, should either install current release of MS VS Code extension:
 
 ### Webpack
 
-Currently, Webpack 3 is in use, but upgrade to Webpack 4 after it has matured by a few months is planned.
+This project uses Webpack v4 for bundling files with npm commands suitable for both web browser and/or Node environments.
 
 #### Babel
 
