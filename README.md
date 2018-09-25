@@ -50,21 +50,21 @@ Run the various commands on the sample files included. Assuming everything works
 
 | $ npm run ...              | Description:                                                            |
 |-------------------------------------|-------------------------------------------------------------------------|
-| `testBuildBrowser`        | builds 'test' files with Webpack in to the 'dist' directory, suitable for a web browser.  Open `dist/index.html` in a web browser. See test results in the dev tools console. |
-| `testBuildNode`           | builds 'test' files with Webpack in to the 'dist' directory, suitable for node.  Use `$ npm run testNodeBundle` or `$ node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` |
+| `testBuildBrowser`        | Webpack builds `test` files in to the `dist` directory, suitable for a web browser.  Open `dist/index.html` in a web browser. See test results in the dev tools console. |
+| `testBuildNode`           | Webpack builds `test` files in to the `dist` directory, suitable for node.  Use `$ node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` |
 | `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI reporter. |
-| `test`                    | runs ES6+ tests using ES module loader, avoiding Babel, piping results to tap-spec CLI reporter. |
-| `testStart`               | Webpack Dev Server compiles 'test' files, opening output in your default web browser.  See test results in the dev tools console. |
-| `testem`                  | TDD UX: runs ES6+ tests using ES module loader, avoiding Babel, with fail/pass tally in console and watches for changes. |
-| `debug`                   | runs ES6+ tests with inspector protocol configured to enable process debugging using ES module loader, avoiding Babel |
-| `devBuild`                | builds 'src' files in to the 'dist' directory, configured for development, suitable to open in a web browser |
+| `test`                    | runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, piping results to tap-spec CLI reporter. |
+| `testStart`               | Webpack Dev Server compiles `test` files, opening output in your default web browser.  See test results in the dev tools console. |
+| `testem`                  | TDD UX: runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, with fail/pass tally in terminal and watches for changes. |
+| `debug`                   | runs ES6+ Tape tests with inspector protocol configured to enable process debugging using esm (ES module loader), avoiding Babel |
+| `devBuild`                | Webpack builds `src` files in to the `dist` directory, configured for development, suitable to open in a web browser |
 | `devWatch`                | runs devBuild and watches for changes |
-| `devStart`                | Webpack Dev Server compiles 'src' files, opening output in default web browser |
-| `prodBuild`               | builds 'src' files in to the 'dist' directory, configured for production, suitable to open in a web browser |
-| `lint`                    | lint files and reports issues (read only) |
-| `lintFix`                 | lint files and attempts to fix issues automatically (write) |
-| `coverage`                | sets node env to dev, NYC instruments code by running ES6+ tests using ES module loader, avoiding Babel |
-| `coverReport`             | runs coverage command before NYC generates HTML report from instumented code, opening report in default web browser |
+| `devStart`                | Webpack Dev Server compiles `src` files, opening output in default web browser |
+| `prodBuild`               | Webpack builds `src` files in to the `dist` directory, configured for production, suitable to open in a web browser |
+| `lint`                    | ESLint lint files and reports issues (read only) |
+| `lintFix`                 | ESLint lint files and attempts to fix issues automatically (write) |
+| `coverage`                | sets node env to dev, NYC instruments code by running ES6+ Tape tests using esm (ES module loader), avoiding Babel |
+| `coverReport`             | runs coverage command before NYC generates HTML report from instrumented code, opening report in default web browser |
 
 
 ## Further reading / Notes
@@ -83,11 +83,15 @@ This project uses Webpack v4 for bundling files with npm commands suitable for b
 
 #### Babel
 
-Webpack is set to use Babel configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins 'add-module-exports' and 'transform-es2015-modules-umd' to ES5 UMD (Universal Module Definition), so they can be run in Node or a Web Browser.
+Webpack is set to use Babel v6 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins 'add-module-exports' and 'transform-es2015-modules-umd' to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
+
+#### esm (ES module loader)
+
+Tests are run directly on the ES6+ source files under the `src` directory avoiding Webpack and Babel transpilation to ES5 by using esm (ES module loader), greatly improving performance and providing more accurate coverage reporting.
 
 #### ESLint
 
-The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on code in the `src` directory for development and production builds, but not test code and will abort reporting any issues found.
+The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on files under the `src` directory for development and production builds, but not test code and if any issues are found, will abort, reporting these issues.
 
 ### Prettier
 
