@@ -3,17 +3,13 @@
     [
       "@babel/preset-env",
       {
+        "modules": false,
+        "debug": false,
         "targets": {
-          "browsers": [
-            "last 2 versions",
-            "ie >= 8"
-          ]
+          "browsers": ["last 2 versions", "ie >= 8"]
         }
       }
     ]
   ],
-  "plugins": [
-    "add-module-exports",
-    "@babel/plugin-transform-modules-umd"
-  ]
+  "plugins": ["add-module-exports", "@babel/plugin-transform-modules-umd"]
 }
