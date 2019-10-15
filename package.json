@@ -7,7 +7,8 @@
     "testBuildBrowser": "node_modules/.bin/webpack --mode development --config webpack/test.browser",
     "testBuildNode": "node_modules/.bin/webpack --mode development --config webpack/test.node",
     "testNodeBundle": "npm run testBuildNode && node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js | node_modules/.bin/tap-spec",
-    "test": "NODE_ENV=development node_modules/.bin/tape --require @babel/register test/jsdom.environment.js test/unit/{,**/}/*.test.js | node_modules/.bin/tap-spec",
+    "testCoverage": "NODE_ENV=development node_modules/.bin/tape --require @babel/register test/jsdom.environment.js test/unit/{,**/}/*.test.js | node_modules/.bin/tap-spec",
+    "test": "NODE_ENV=development node_modules/.bin/tape --require esm test/jsdom.environment.js test/unit/{,**/}/*.test.js | node_modules/.bin/tap-spec",
     "testStart": "node_modules/.bin/webpack-dev-server --mode development --config webpack/test.browser --open",
     "testem": "node_modules/.bin/testem -f testem.node.json",
     "debug": "NODE_ENV=debug node --nolazy --inspect-brk=5858 node_modules/.bin/tape --require esm test/jsdom.environment.js test/unit/{,**/}/*.test.js",
@@ -17,7 +18,7 @@
     "prodBuild": "node_modules/.bin/webpack --mode production --config webpack/prod",
     "lint": "node_modules/.bin/eslint \"*/**/*.js\"",
     "lintFix": "node_modules/.bin/eslint \"*/**/*.js\" --fix",
-    "coverage": "node_modules/nyc/bin/nyc.js npm test",
+    "coverage": "node_modules/nyc/bin/nyc.js npm run testCoverage",
     "coverReport": "npm run coverage && node_modules/nyc/bin/nyc.js report --reporter=html && ./bin/opn-cli coverage/index.html -- chrome"
   },
   "repository": {
