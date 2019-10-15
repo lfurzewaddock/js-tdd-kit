@@ -1,6 +1,6 @@
 "use strict";
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
@@ -39,8 +39,8 @@ module.exports = {
   target: "node",
   externals: [nodeExternals()],
   plugins: [
-    new CleanWebpackPlugin(["dist"], {
-      root: path.resolve(__dirname, "../"),
+    new CleanWebpackPlugin({
+      root: path.resolve(__dirname, "../dist"),
     }),
     new CopyWebpackPlugin([{ from: "**/*.environment.js", to: "../dist" }]),
     new webpack.SourceMapDevToolPlugin({
