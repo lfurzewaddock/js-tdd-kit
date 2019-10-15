@@ -2,8 +2,8 @@ import test from "tape";
 
 import { cube, square } from "../../../src/modules/math";
 
-test("math", (t) => {
-  t.test("cube", (assert) => {
+test("math", t => {
+  t.test("cube", assert => {
     const message = "should be a function";
     const expected = "function";
     const actual = typeof cube;
@@ -12,7 +12,7 @@ test("math", (t) => {
     assert.end();
   });
 
-  t.test("cube", (assert) => {
+  t.test("cube", assert => {
     const message = "should return single supplied argument cubed: 1";
     const expected = 1;
     const actual = cube(1);
@@ -21,7 +21,7 @@ test("math", (t) => {
     assert.end();
   });
 
-  t.test("cube", (assert) => {
+  t.test("cube", assert => {
     const message = "should return single supplied argument cubed: 2";
     const expected = 8;
     const actual = cube(2);
@@ -30,7 +30,7 @@ test("math", (t) => {
     assert.end();
   });
 
-  t.test("square", (assert) => {
+  t.test("square", assert => {
     const message = "should be a function";
     const expected = "function";
     const actual = typeof square;
@@ -39,7 +39,7 @@ test("math", (t) => {
     assert.end();
   });
 
-  t.test("square", (assert) => {
+  t.test("square", assert => {
     const message = "should return single supplied argument squared: 1";
     const expected = 1;
     const actual = square(1);
@@ -48,7 +48,7 @@ test("math", (t) => {
     assert.end();
   });
 
-  t.test("square", (assert) => {
+  t.test("square", assert => {
     const message = "should return single supplied argument squared: 2";
     const expected = 4;
     const actual = square(2);

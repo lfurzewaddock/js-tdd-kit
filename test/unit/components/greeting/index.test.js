@@ -10,11 +10,11 @@ function setup() {
   var globalObj = {};
   if (isNode) {
     if (
-      typeof global.jsTddKitLfurzewaddockComGithub !== "object"
-      || typeof global.jsTddKitLfurzewaddockComGithub.jsdom !== "object"
+      typeof global.jsTddKitLfurzewaddockComGithub !== "object" ||
+      typeof global.jsTddKitLfurzewaddockComGithub.jsdom !== "object"
     ) {
       throw new Error(
-        "jsTddKitLfurzewaddockComGithub namespace or jsdom on namespace does not exist!",
+        "jsTddKitLfurzewaddockComGithub namespace or jsdom on namespace does not exist!"
       );
     }
     const { JSDOM } = global.jsTddKitLfurzewaddockComGithub.jsdom;
@@ -43,13 +43,13 @@ function teardown(fixtures) {
   fixtures = null; // eslint-disable-line no-param-reassign
 }
 
-before("before", (assert) => {
+before("before", assert => {
   assert.pass("Do something before tests here");
   assert.end();
 });
 
-test("greeting", (t) => {
-  t.test("greeting.default", (assert) => {
+test("greeting", t => {
+  t.test("greeting.default", assert => {
     const message = "should be a function ";
     const expected = "function";
     const actual = typeof greeting.default;
@@ -58,7 +58,7 @@ test("greeting", (t) => {
 
     assert.end();
   });
-  t.test("greeting.getElement", (assert) => {
+  t.test("greeting.getElement", assert => {
     const fixtures = setup();
     const el = greeting.getElement(fixtures.document);
 
@@ -71,7 +71,7 @@ test("greeting", (t) => {
     teardown(fixtures);
     assert.end();
   });
-  t.test("greeting.getElement", (assert) => {
+  t.test("greeting.getElement", assert => {
     const message = "should raise an error when not supplied arguments";
     const doc = "";
 
@@ -80,7 +80,7 @@ test("greeting", (t) => {
     }, message);
     assert.end();
   });
-  t.test("greeting.default", (assert) => {
+  t.test("greeting.default", assert => {
     const fixtures = setup();
     greeting.default(fixtures.divElement, fixtures.document);
 
@@ -93,7 +93,7 @@ test("greeting", (t) => {
     teardown(fixtures);
     assert.end();
   });
-  t.test("greeting.default", (assert) => {
+  t.test("greeting.default", assert => {
     const fixtures = setup();
     greeting.default(fixtures.divElement, fixtures.document);
 
@@ -106,8 +106,9 @@ test("greeting", (t) => {
     teardown(fixtures);
     assert.end();
   });
-  t.test("greeting.component", (assert) => {
-    const message = "should raise an error when not supplied DOM element as first argument";
+  t.test("greeting.component", assert => {
+    const message =
+      "should raise an error when not supplied DOM element as first argument";
     const el = "";
 
     assert.throws(function throwsFn() {
@@ -115,7 +116,7 @@ test("greeting", (t) => {
     }, message);
     assert.end();
   });
-  t.test("greeting.default", (assert) => {
+  t.test("greeting.default", assert => {
     const fixtures = setup();
     const mutateEl = greeting.component(fixtures.divElement, "simple string");
 
@@ -131,8 +132,9 @@ test("greeting", (t) => {
     teardown(fixtures);
     assert.end();
   });
-  t.test("greeting.render", (assert) => {
-    const message = "should raise an error when not supplied DOM document as second argument";
+  t.test("greeting.render", assert => {
+    const message =
+      "should raise an error when not supplied DOM document as second argument";
     const el = "";
     const doc = "";
 
@@ -141,10 +143,11 @@ test("greeting", (t) => {
     }, message);
     assert.end();
   });
-  t.test("greeting.generateHtml", (assert) => {
+  t.test("greeting.generateHtml", assert => {
     const testString = "replace me";
 
-    const message = "should generate string supplied including trailing single variable value";
+    const message =
+      "should generate string supplied including trailing single variable value";
     const expected = "My test replace me";
     const actual = greeting.generateHtml`My test ${testString}`;
 
@@ -152,7 +155,7 @@ test("greeting", (t) => {
     assert.end();
   });
 
-  after("after", (assert) => {
+  after("after", assert => {
     assert.pass("Do something after tests here");
     assert.end();
   });
