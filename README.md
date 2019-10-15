@@ -83,13 +83,13 @@ This project uses Webpack v4 for bundling files with npm commands suitable for b
 
 Webpack is set to use Babel v7 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins `add-module-exports` and `transform-es2015-modules-umd` to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
 
-#### esm (ES module loader)
-
-Tests are run directly on the ES6+ source files under the `src` directory avoiding Webpack and Babel transpilation to ES5 by using esm (ES module loader), greatly improving performance.
-
 #### ESLint
 
 The Webpack plugin `eslint-loader` runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on files under the `src` directory for development and production builds, but not test code and if any issues are found, will abort, reporting these issues.
+
+### esm (ES module loader)
+
+Tests are run directly on the ES6+ source files under the `src` directory avoiding Webpack and Babel transpilation to ES5 by using esm (ES module loader), greatly improving performance.
 
 ### Prettier
 
