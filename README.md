@@ -12,60 +12,58 @@
 <img src="https://raw.githubusercontent.com/github/explore/6c6508f34230f0ac0d49e847a326429eefbfc030/topics/es6/es6.png" width="75" alt="ES6" title="ES6"></img>
 <img src="https://avatars0.githubusercontent.com/u/9271229?s=100&v=4" width="75" alt="jsdom" title="jsdom"></img>
 
-
 ## Getting started
 
 1. Clone the repository into your "new-project" directory
 
-    ```bash
-    git clone git@github.com:lfurzewaddock/js-tdd-kit.git new-project && cd new-project
-    ```
+   ```bash
+   git clone git@github.com:lfurzewaddock/js-tdd-kit.git new-project && cd new-project
+   ```
 
 2. Remove the git repository, and then initialise a new one
 
-    ```bash
-    rm -rf .git && git init
-    ```
+   ```bash
+   rm -rf .git && git init
+   ```
 
 3. Remove README and replace with your own
 
-    ```bash
-    rm README.md && touch README.md
-    ```
+   ```bash
+   rm README.md && touch README.md
+   ```
 
 4. Update `package.json` and install dependencies
 
-    ```bash
-    npm init && npm install
-    ```
-    
-    Don't forget to update the description, contact details, URL's, etc. in the `package.json` file.
+   ```bash
+   npm init && npm install
+   ```
+
+   Don't forget to update the description, contact details, URL's, etc. in the `package.json` file.
 
 5. Test configuration
 
-Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both `src` and `test` directories, excluding files `test/utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation. 
+Run the various commands on the sample files included. Assuming everything works as expected feel free to delete the contents of both `src` and `test` directories, excluding files `test/utils.js` and `test/jsdom.environment.js` which are used to include jsdom. See sample files for an example implementation.
 
 ## Commands
 
-
-| $ npm run ...              | Description:                                                            |
-|-------------------------------------|-------------------------------------------------------------------------|
-| `testBuildBrowser`        | Webpack builds `test` files in to the `dist` directory, suitable for a web browser.  Open `/dist/index.html` in a web browser to see test results in the dev tools console. |
-| `testBuildNode`           | Webpack builds `test` files in to the `dist` directory, suitable for Node.  In the termimal run `node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` to see test results. |
-| `testNodeBundle`          | runs testBuildNode, before running tests, piping results to tap-spec CLI terminal reporter. |
-| `test`                    | runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, piping results to tap-spec CLI terminal reporter. |
-| `testStart`               | Webpack Dev Server compiles `test` files, opening output in default web browser.  See test results in the web browser dev tools console. |
-| `testem`                  | TDD UX: runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, with fail/pass tally in the terminal and watches for changes. |
-| `debug`                   | runs ES6+ Tape tests with inspector protocol configured to enable process debugging using esm (ES module loader), avoiding Babel. |
-| `devBuild`                | Webpack builds `src` files in to the `dist` directory, configured for development, suitable to open in a web browser. |
-| `devWatch`                | runs devBuild and watches for changes. |
-| `devStart`                | Webpack Dev Server compiles `src` files, opening output in default web browser. |
-| `prodBuild`               | Webpack builds `src` files in to the `dist` directory, configured for production, suitable to open in a web browser. |
-| `lint`                    | ESLint lint files and reports issues (read only). |
-| `lintFix`                 | ESLint lint files and attempts to fix issues automatically (write). |
-| `coverage`                | sets Node env to dev, NYC instruments code by running ES6+ Tape tests using esm (ES module loader), avoiding Babel. |
-| `coverReport`             | runs coverage command before NYC generates HTML report from instrumented code, opening report in default web browser. |
-
+| \$ npm run ...     | Description:                                                                                                                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `testBuildBrowser` | Webpack builds `test` files in to the `dist` directory, suitable for a web browser. Open `/dist/index.html` in a web browser to see test results in the dev tools console.                |
+| `testBuildNode`    | Webpack builds `test` files in to the `dist` directory, suitable for Node. In the termimal run `node_modules/.bin/tape dist/jsdom.environment.js dist/app.bundle.js` to see test results. |
+| `testNodeBundle`   | runs testBuildNode, before running tests, piping results to tap-spec CLI terminal reporter.                                                                                               |
+| `test`             | runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, piping results to tap-spec CLI terminal reporter.                                                                      |
+| `testCoverage`     | runs ES6+ Tape tests using @babel/register, using Babel, enabling NYC to instrument code, piping results to tap-spec CLI terminal reporter.                                               |
+| `testStart`        | Webpack Dev Server compiles `test` files, opening output in default web browser. See test results in the web browser dev tools console.                                                   |
+| `testem`           | TDD UX: runs ES6+ Tape tests using esm (ES module loader), avoiding Babel, with fail/pass tally in the terminal and watches for changes.                                                  |
+| `debug`            | runs ES6+ Tape tests with inspector protocol configured to enable process debugging using esm (ES module loader), avoiding Babel.                                                         |
+| `devBuild`         | Webpack builds `src` files in to the `dist` directory, configured for development, suitable to open in a web browser.                                                                     |
+| `devWatch`         | runs devBuild and watches for changes.                                                                                                                                                    |
+| `devStart`         | Webpack Dev Server compiles `src` files, opening output in default web browser.                                                                                                           |
+| `prodBuild`        | Webpack builds `src` files in to the `dist` directory, configured for production, suitable to open in a web browser.                                                                      |
+| `lint`             | ESLint lint files and reports issues (read only).                                                                                                                                         |
+| `lintFix`          | ESLint lint files and attempts to fix issues automatically (write).                                                                                                                       |
+| `coverage`         | sets Node env to dev, NYC instruments code by running ES6+ Tape tests using Babel.                                                                                                        |
+| `coverReport`      | runs coverage command before NYC generates HTML report from instrumented code, opening report in default web browser.                                                                     |
 
 ## Further reading / Notes
 
@@ -83,19 +81,19 @@ This project uses Webpack v4 for bundling files with npm commands suitable for b
 
 #### Babel
 
-Webpack is set to use Babel v6 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins `add-module-exports` and `transform-es2015-modules-umd` to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
+Webpack is set to use Babel v7 configured in `.babelrc` to transpile ES6+ to ES5. The source files under the `src` directory use ESM (ECMAScript Module) syntax and are transpiled using plugins `add-module-exports` and `transform-es2015-modules-umd` to ES5 UMD (Universal Module Definition), so they can be run in Node or a web browser.
 
 #### esm (ES module loader)
 
-Tests are run directly on the ES6+ source files under the `src` directory avoiding Webpack and Babel transpilation to ES5 by using esm (ES module loader), greatly improving performance and providing more accurate coverage reporting.
+Tests are run directly on the ES6+ source files under the `src` directory avoiding Webpack and Babel transpilation to ES5 by using esm (ES module loader), greatly improving performance.
 
 #### ESLint
 
-The Webpack plugin 'eslint-loader' runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on files under the `src` directory for development and production builds, but not test code and if any issues are found, will abort, reporting these issues.
+The Webpack plugin `eslint-loader` runs ESLint configured in `.eslintrc.json` and `.eslintignore` automatically on files under the `src` directory for development and production builds, but not test code and if any issues are found, will abort, reporting these issues.
 
 ### Prettier
 
-Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from the command line (See lint commands above), using the package `prettier-eslint` prettier is run first then ESlint, so ESLint rules take precedence. Webpack should be set to handle this automatically, but currently is not.
+Prettier configured in `.prettierrc.json` and `.prettierignore` is integrated into ESLint and run from the command line (See lint commands above). `eslint-config-prettier` (turns off all ESLint rules that conflict with Prettier) and `eslint-plugin-prettier` (integrates Prettier rules into ESLint rules).
 
 ### Tape/TDD
 
@@ -114,16 +112,17 @@ Prettier configured in `.prettierrc.json` and `.prettierignore` can be run from 
 
 jsdom is included for testing code that requires a Web Browser on the command line, such as DOM manipulation, to facilitate a fast, integrated TDD experience.
 
-To avoid the antipattern of copying globals from a jsdom window onto the Node.js global object; https://github.com/jsdom/jsdom/wiki/Don't-stuff-jsdom-globals-onto-the-Node-global, in the file `test/jsdom.environment.js`, jsdom is made available on the Node.js global object under the namespace: `jsTddKitLfurzewaddockComGithub` which can be invoked in a fixture setup function within tests that need it. 
+To avoid the antipattern of copying globals from a jsdom window onto the Node.js global object; https://github.com/jsdom/jsdom/wiki/Don't-stuff-jsdom-globals-onto-the-Node-global, in the file `test/jsdom.environment.js`, jsdom is made available on the Node.js global object under the namespace: `jsTddKitLfurzewaddockComGithub` which can be invoked in a fixture setup function within tests that need it.
 
 Currently, it is not possible to bundle jsdom with Webpack https://github.com/jsdom/jsdom/issues/2066, which is why `test/jsdom.environment.js` is written using standard ES5 CommonJS syntax, so it does not need to be included in the bundle by Webpack.
 
-Other approaches *not encouraged by jsdom* which add jsdom to the node process global object include: ;
+Other approaches _not encouraged by jsdom_ which add jsdom to the node process global object include:
+
 - https://zinserjan.github.io/mocha-webpack/docs/guides/jsdom.html
 
 Other potential ways using npm packages;
+
 - [browser-env](https://github.com/lukechilds/browser-env)
 - [window](https://github.com/lukechilds/window)
 - [jsdom-global](https://github.com/rstacruz/jsdom-global)
 - [shim-webpack-require-for-node-tests](https://www.npmjs.com/package/shim-webpack-require-for-node-tests)
-
